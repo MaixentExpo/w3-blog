@@ -36,9 +36,9 @@
       <i class="fa fa-bars"></i>
     </a> 
     <?php if ( empty(get_header_image()) ) : ?>
-      <a href="/" class="w3-bar-item w3-button w3-wide"><b><?php echo bloginfo("name"); ?></b></a>
+      <a href="<?php echo get_home_url(); ?>" class="w3-bar-item w3-button w3-wide"><b><?php echo bloginfo("name"); ?></b></a>
     <?php else: ?>
-      <a href="/" class="w3-bar-item"><img style="height: 40px" src="<?php echo get_header_image(); ?>"/></a>
+      <a href="<?php echo get_home_url(); ?>" class="w3-bar-item"><img style="height: 40px" src="<?php echo get_header_image(); ?>"/></a>
     <?php endif; ?>
     <!-- Right-sided navbar links -->
     <div class="w3-right w3-hide-medium w3-hide-small">

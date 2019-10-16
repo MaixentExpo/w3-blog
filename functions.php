@@ -251,7 +251,7 @@ function pbi_setup()
         'location_menu_footer_public' => "Location Menu Footer Gauche",
         'location_menu_footer_public2' => "Location Menu Footer Centre",
         'location_menu_footer_prive' => "Location Menu Footer Privé",
-        'location_menu_sidebar' => "Location Menu Sidebar",
+        // 'location_menu_sidebar' => "Location Menu Sidebar",
     ));
 
     // // le rôle editor aura les possiblités de gérer le menu
