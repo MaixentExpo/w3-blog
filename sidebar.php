@@ -88,7 +88,7 @@ $req_blog = new WP_Query($args);
               </li>
             <?php endif; ?>
           <?php else: ?>
-            <? if ( $post->post_status == 'publish' ):?>
+            <?php if ( $post->post_status == 'publish' ):?>
               <li class="w3-padding-16 <?php echo $style_class; ?>">
                 <div class="w3-tag w3-round-large w3-theme w3-right"><?php echo $tag; ?></div>
                 <a href="<?php echo $url;?>"><span class="w3-large"><?php the_title();?></span></a>
@@ -126,7 +126,7 @@ $req_blog = new WP_Query($args);
       ?>
     <?php foreach ($cats as $slug => $name): ?>
       <span class="w3-tag w3-round-large w3-margin-bottom w3-theme">
-      <a href="/category/<?php echo $slug;?>" style="text-decoration: none;">
+      <a href="<?php echo get_home_url() . '/category/' . $slug;?>" style="text-decoration: none;">
       <?php echo $name;?></a>
       </span>
     <?php endforeach;?>
@@ -134,7 +134,7 @@ $req_blog = new WP_Query($args);
       <p>
     <?php foreach ($tags as $slug => $name): ?>
       <span class="w3-tag w3-round-large w3-margin-bottom w3-theme">
-      <a href="/tag/<?php echo $slug;?>" style="text-decoration: none;">
+      <a href="<?php echo get_home_url() . '/tag/' . $slug;?>" style="text-decoration: none;">
       <?php echo $name;?></a>
       </span>
     <?php endforeach;?>
