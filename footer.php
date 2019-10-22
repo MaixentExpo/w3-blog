@@ -70,7 +70,7 @@ if (!empty($menuID)) {
         endforeach;
         echo '<a href="' . wp_logout_url("/") . '" title="Se déconnecter" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Se déconnecter" . '</a>';
     } else {
-        echo '<a href="' . get_home_url() . '/admin" title="Se connecter" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Admin..." . '</a>';
+        echo '<a href="' . get_home_url() . '/admin" title="Se connecter" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Se connecter..." . '</a>';
     } // endif
     echo '</div>'; // end w3-bar
 }
