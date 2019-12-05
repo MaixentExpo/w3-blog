@@ -247,10 +247,10 @@ function pbi_setup()
 
     // active la gestion des menus dans l'administration
     register_nav_menus(array(
-        'location_menu_primary' => 'Location Menu Primary',
-        'location_menu_footer_public' => "Location Menu Footer Gauche",
-        'location_menu_footer_public2' => "Location Menu Footer Centre",
-        'location_menu_footer_prive' => "Location Menu Footer Privé",
+        'location_menu_primary' => 'Location haut page',
+        'location_menu_footer_public' => "Location bas page gauche",
+        'location_menu_footer_public2' => "Location bas page centre",
+        'location_menu_footer_prive' => "Location bas page droite",
         // 'location_menu_sidebar' => "Location Menu Sidebar",
     ));
 

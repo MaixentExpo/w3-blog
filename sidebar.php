@@ -139,13 +139,6 @@ $req_blog = new WP_Query($args);
       </span>
     <?php endforeach;?>
       </p>
-      <!-- Coche Privé seulement -->
-      <?php if ( is_user_logged_in() ): ?>
-        <p>
-        <input id="pbi_private_checked_id" class="w3-check" type="checkbox" <?php echo is_pbi_cookie('pbi_private_checked') ? 'checked="checked"' : '';?>>
-        <label for="pbi_private_checked_id">Voir les articles privés</label>
-        </p>
-      <?php endif; ?>
     </div><!-- container -->
   </div><!-- w3-card -->
   <!-- /CLASSEMENT -->

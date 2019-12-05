@@ -69,8 +69,9 @@ if (!empty($menuID)) {
             echo '<a href="' . $navItem->url . '" title="' . $navItem->title . '" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . $navItem->title . '</a>';
         endforeach;
         echo '<a href="' . wp_logout_url("/") . '" title="Se déconnecter" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Se déconnecter" . '</a>';
+        echo '<a href="' . get_home_url() . '/admin" title="Administration" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Administration" . '</a>';
     } else {
-        echo '<a href="' . get_home_url() . '/admin" title="Se connecter" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Se connecter..." . '</a>';
+        echo '<a href="' . get_home_url() . '/admin" title="Administration" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Administration..." . '</a>';
     } // endif
     echo '</div>'; // end w3-bar
 }
