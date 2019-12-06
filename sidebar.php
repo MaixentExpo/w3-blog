@@ -30,10 +30,10 @@ if ( is_category() ) {
 <div class="w3-col l4 noPrint">
   <!-- A LA UNE / LES DERNIERS ARTICLES -->
   <div class="w3-card w3-margin">
-    <div class="w3-container w3-padding w3-theme w3-opacity" style="">
+    <div class="w3-container w3-padding w3-theme w3-opacity-min" style="">
     <?php if ( $is_tag or $is_category ): ?>
       <span class="w3-large">Articles classés dans </span>
-      <span class="w3-tag w3-round-large w3-white w3-large w3-opacity-off">
+      <span class="w3-tag w3-round-large w3-white w3-large w3-opacity-min-off">
         <?php echo $term_name; ?>
       </span>
     <?php else: ?>
@@ -45,6 +45,8 @@ if ( $is_category ):
   $args = array(
     'post_type' => 'post',
     'posts_per_page' => -1,
+    'orderby' => 'title',
+    'order' => 'ASC',
     'cat' => $term_id
   );
 elseif ( $is_tag ):
@@ -104,7 +106,7 @@ $req_blog = new WP_Query($args);
   <p class="w3-tiny">&nbsp;</p>
   <!-- CLASSEMENT -->
   <div class="w3-card w3-margin">
-    <div class="w3-container w3-padding w3-theme w3-opacity">
+    <div class="w3-container w3-padding w3-theme w3-opacity-min">
       <span class="w3-large">Classement des articles</span>
     </div>
     <div class="w3-container w3-white">

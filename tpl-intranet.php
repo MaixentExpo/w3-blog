@@ -7,7 +7,7 @@ Template Name: Page INTRANET
 
 <div class="w3-main" style="margin-top: 64px">
     <div class="w3-card w3-margin w3-white">
-        <div class="w3-container w3-padding w3-theme w3-opacity" style="">
+        <div class="w3-container w3-padding w3-theme w3-opacity-min" style="">
             <h4 class="">La page Intranet</h4>
         </div>
         <!-- First Photo Grid-->
