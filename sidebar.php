@@ -41,14 +41,17 @@ if ( is_category() ) {
     <?php endif; ?>
     </div>
 <?php
+$options = get_option('theme_options');
 if ( $is_category ):
   $args = array(
     'post_type' => 'post',
     'posts_per_page' => -1,
-    'orderby' => 'title',
-    'order' => 'ASC',
     'cat' => $term_id
   );
+  if ( $options['theme-sort'] == "oui"):
+    $args['orderby'] = 'title';
+    $args['order'] = 'ASC';
+  endif;
 elseif ( $is_tag ):
   $args = array(
     'post_type' => 'post',
@@ -144,36 +147,5 @@ $req_blog = new WP_Query($args);
     </div><!-- container -->
   </div><!-- w3-card -->
   <!-- /CLASSEMENT -->
-  <!-- MENU SIDEBAR -->
-    <?php
-      $locations = get_nav_menu_locations(); 
-      $menuID = $locations['location_menu_sidebar'];
-      if (! empty ($menuID)) {
-        echo '<p>&nbsp;</p>';
-        echo '<div class="w3-card w3-margin">';
-        echo '<div class="w3-container w3-padding">';
-        echo '<h4 class="">Liens</h4>';
-        echo '</div>';
-        echo '<ul class="w3-ul w3-hoverable w3-white">';
-        if ( is_user_logged_in() ) {
-          $menuNav = wp_get_nav_menu_items($menuID);
-          foreach ( $menuNav as $navItem ):
-            echo '<li class="w3-padding-16">';
-            echo '<a href="'.$navItem->url.'" title="'.$navItem->title.'">'.$navItem->title.'</a>';
-            echo '</li>';
-          endforeach;
-          echo '<li class="w3-padding-16">';
-          echo '<a href="'.wp_logout_url("/").'" title="Se déconnecter">'."Se déconnecter".'</a>';
-          echo '</li>';
-        } else {
-          echo '<li class="w3-padding-16">';
-          echo '<a href="'.wp_login_url("/").'" title="Se connecter" >'."Se connecter...".'</a>';
-          echo '</li>';
-        } // endif
-        echo '</ul>';
-        echo '</div>'; // w3-card
-      }
-    ?>
-  <!-- /MENU SIDEBAR -->
-  </div><!-- w3-col -->
+</div><!-- w3-col -->
 <!-- /SIDEBAR -->

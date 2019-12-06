@@ -42,7 +42,21 @@ function pbi_setting_theme_w3css()
             . ($theme == $options["theme-w3css"] ? " selected" : "")
             . '>' . $theme . '</option>';
     }
-    // echo "<input id='theme-w3css' name='theme_options[theme-w3css]' size='40' type='text' value='{$options['theme-w3css']}' />";
+}
+
+/**
+Saisie du champ theme_w3css
+ */
+function pbi_setting_theme_sort()
+{
+    $items = array('oui', 'non');
+    $options = get_option('theme_options');
+    echo '<select id="theme-sort" name="theme_options[theme-sort]">';
+    foreach ($items as $item) {
+        echo '<option value="' . $item . '"'
+            . ($item == $options["theme-sort"] ? " selected" : "")
+            . '>' . $item . '</option>';
+    }
 }
 
 /**
@@ -52,8 +66,6 @@ function theme_options_validate($input)
 {
     $options = get_option('theme_options');
     $options['theme-w3css'] = trim($input['theme-w3css']);
-    // if (!preg_match('/^[a-z\-]{32}$/i', $options['theme-w3css']) ) {
-    //     $options['theme-w3css'] = '';
-    // }
+    $options['theme-sort'] = trim($input['theme-sort']);
     return $options;
 }

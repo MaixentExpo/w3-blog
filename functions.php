@@ -64,14 +64,14 @@ function pbi_admin_init()
     register_setting(
         'theme_options', // nom du groupe d'options utilisé par settings_fields
         'theme_options', // nom des options
-        'theme_options_validate'
-    ); // fonction qui validera la saisie
+        'theme_options_validate' // fonction qui validera la saisie
+    ); 
     // Création de la section des options
     add_settings_section(
         'options_main', // identifiant unique de la section
-        'Choix du thème de la feuille de style W3.CSS', // titre de la section
+        'Options du thème', // titre de la section
         'options_section_text', // fonction d'affichage de la section
-        'options_theme'
+        'options_theme' // slug de la page
     ); // slug de la page fonction appelé par do_settings_sections
     // Création du champ de saisie
     add_settings_field(
@@ -79,20 +79,22 @@ function pbi_admin_init()
         'Nom du thème W3.CSS', // son label
         'pbi_setting_theme_w3css', // sa fonction pour l'afficher
         'options_theme', // le slug de la page
-        'options_main'
+        'options_main' // id de la section
     ); // id de la section
-
-    // // Ajout du script F4 Media Taxonomies dans l'administration
-    // add_filter('F4/MT/Core/has_filter', function() {
-    //     return true;
-    // });
+    add_settings_field(
+        'theme__sort', // id du champ
+        'Tri des articles sur le titre', // son label
+        'pbi_setting_theme_sort', // sa fonction pour l'afficher
+        'options_theme', // le slug de la page
+        'options_main' // id de la section
+    ); // id de la section
 
 } // pbi_admin_init
 add_action('admin_init', 'pbi_admin_init');
 
 /**
-Ajout d'un menu dans les options du thème
-https://codex.wordpress.org/Adding_Administration_Menus
+    Ajout d'un menu dans les options du thème
+    https://codex.wordpress.org/Adding_Administration_Menus
  */
 function pbi_admin_menus()
 {
