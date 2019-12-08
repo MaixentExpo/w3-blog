@@ -25,6 +25,7 @@ if ( is_category() ) {
   $term_slug = get_cat_slug($term_id);
   $term_name = single_cat_title('', false );
 }
+$options = get_option('theme_options');
 ?>
 <!-- SIDEBAR -->
 <div class="w3-col l4 noPrint">
@@ -32,12 +33,12 @@ if ( is_category() ) {
   <div class="w3-card w3-margin">
     <div class="w3-container w3-padding w3-theme w3-opacity-min" style="">
     <?php if ( $is_tag or $is_category ): ?>
-      <span class="w3-large">Articles classés dans </span>
+      <span class="w3-large"><?php echo $options["theme_article_title"]; ?></span>
       <span class="w3-tag w3-round-large w3-white w3-large w3-opacity-min-off">
         <?php echo $term_name; ?>
       </span>
     <?php else: ?>
-      <span class="w3-large">Les derniers articles</span>
+      <span class="w3-large"><?php echo $options["theme_news_title"]; ?></span>
     <?php endif; ?>
     </div>
 <?php
@@ -63,6 +64,10 @@ else:
     'post_type' => 'post',
     'post__in' => get_option('sticky_posts')
   );
+  if ( $options['theme-sort'] == "oui"):
+    $args['orderby'] = 'title';
+    $args['order'] = 'ASC';
+  endif;
 endif;
 $req_blog = new WP_Query($args);
 ?>
@@ -110,7 +115,7 @@ $req_blog = new WP_Query($args);
   <!-- CLASSEMENT -->
   <div class="w3-card w3-margin">
     <div class="w3-container w3-padding w3-theme w3-opacity-min">
-      <span class="w3-large">Classement des articles</span>
+      <span class="w3-large"><?php echo $options["theme_classement_title"]; ?></span>
     </div>
     <div class="w3-container w3-white">
       <p>

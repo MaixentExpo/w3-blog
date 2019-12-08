@@ -6,7 +6,7 @@ http://www.geekpress.fr/wp-query-creez-des-requetes-personnalisees-dans-vos-them
 /**
   Chargement des scripts du front-end
  */
-define('PBI_VERSION', '19.10.17');
+define('PBI_VERSION', '19.12.08');
 
 // Filtre pour autoriser l'import de média issus d'un export de site
 add_filter('http_request_host_is_external', '__return_true');
@@ -26,7 +26,7 @@ function pbi_enqueue_scripts()
 
     $options = get_option('theme_options');
     if ($options) {
-        wp_enqueue_style('theme-w3css', 'https://www.w3schools.com/lib/w3-theme-' . $options['theme-w3css'] . '.css', array('theme-style'), PBI_VERSION, 'all');
+        wp_enqueue_style('theme-w3css', 'https://www.w3schools.com/lib/w3-theme-' . $options['theme_w3css'] . '.css', array('theme-style'), PBI_VERSION, 'all');
     } else {
         wp_enqueue_style('theme-w3css', 'https://www.w3schools.com/lib/w3-theme-dark-grey.css', array('theme-style'), PBI_VERSION, 'all');
     }
@@ -73,21 +73,42 @@ function pbi_admin_init()
         'options_section_text', // fonction d'affichage de la section
         'options_theme' // slug de la page
     ); // slug de la page fonction appelé par do_settings_sections
-    // Création du champ de saisie
+    // Création des champs de saisie
     add_settings_field(
         'theme__w3css', // id du champ
         'Nom du thème W3.CSS', // son label
         'pbi_setting_theme_w3css', // sa fonction pour l'afficher
         'options_theme', // le slug de la page
         'options_main' // id de la section
-    ); // id de la section
+    );
     add_settings_field(
         'theme__sort', // id du champ
         'Tri des articles sur le titre', // son label
         'pbi_setting_theme_sort', // sa fonction pour l'afficher
         'options_theme', // le slug de la page
         'options_main' // id de la section
-    ); // id de la section
+    );
+    add_settings_field(
+        'theme__news_title', // id du champ
+        'Titre du bloc Articles Mis en avant', // son label
+        'pbi_setting_theme_news_title', // sa fonction pour l'afficher
+        'options_theme', // le slug de la page
+        'options_main' // id de la section
+    );
+    add_settings_field(
+        'theme__article_title', // id du champ
+        'Titre du bloc liste des articles', // son label
+        'pbi_setting_theme_article_title', // sa fonction pour l'afficher
+        'options_theme', // le slug de la page
+        'options_main' // id de la section
+    );
+    add_settings_field(
+        'theme__classement_title', // id du champ
+        'Titre du bloc des catégories', // son label
+        'pbi_setting_theme_classement_title', // sa fonction pour l'afficher
+        'options_theme', // le slug de la page
+        'options_main' // id de la section
+    );
 
 } // pbi_admin_init
 add_action('admin_init', 'pbi_admin_init');
@@ -115,11 +136,25 @@ function pbi_admin_menus()
         'options_theme', // slug du menu
         'theme_options_page' // function qui affichera la page
     );
+    // Pas de gestion des couleurs car traité par la feuille de style
+    //$wp_customize->remove_section( 'colors' );
+
     // Contient la fonction theme_options_page
     include 'options-page.php';
 
 }
 add_action('admin_menu', 'pbi_admin_menus');
+
+/**
+ * Suppression des sections de personnalisation du thème
+ */
+function pbi_theme_section( $wp_customize ) {
+    $wp_customize->remove_section( 'colors' );
+    $wp_customize->remove_section( 'static_front_page' );
+    $wp_customize->remove_section( 'custom_css' );
+}
+add_action( 'customize_register', 'pbi_theme_section' );
+
 
 /**
  * Ajout du filtre "Etiquette" dans l'administration des articles

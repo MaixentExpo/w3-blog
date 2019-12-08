@@ -2,7 +2,7 @@
 // http://ottopress.com/2009/wordpress-settings-api-tutorial/
 
 /**
-Affichage de la page des Options
+    Affichage de la page des Options
  */
 function theme_options_page()
 {
@@ -20,7 +20,7 @@ function theme_options_page()
 }
 
 /**
-Affichage de la section
+    Affichage de la section
  */
 function options_section_text()
 {
@@ -28,7 +28,7 @@ function options_section_text()
 }
 
 /**
-Saisie du champ theme_w3css
+    Saisie du champ theme_w3css
  */
 function pbi_setting_theme_w3css()
 {
@@ -36,36 +36,71 @@ function pbi_setting_theme_w3css()
         , 'teal', 'red', 'deep-orange', 'pink', 'light-blue', 'green', 'purple', 'cyan'
         , 'light-green', 'lime', 'khaki', 'yellow', 'amber', 'orange', 'grey', 'black', 'w3school');
     $options = get_option('theme_options');
-    echo '<select id="theme-w3css" name="theme_options[theme-w3css]">';
+    echo '<select id="theme_options[theme_w3css]" name="theme_options[theme_w3css]">';
     foreach ($themes as $theme) {
         echo '<option value="' . $theme . '"'
-            . ($theme == $options["theme-w3css"] ? " selected" : "")
+            . ($theme == $options["theme_w3css"] ? " selected" : "")
             . '>' . $theme . '</option>';
     }
 }
 
 /**
-Saisie du champ theme_w3css
+    Saisie du champ theme_sort
  */
 function pbi_setting_theme_sort()
 {
-    $items = array('oui', 'non');
+    $items = array('non', 'oui');
     $options = get_option('theme_options');
-    echo '<select id="theme-sort" name="theme_options[theme-sort]">';
+    echo '<select id="theme_options[theme_sort]" name="theme_options[theme_sort]">';
     foreach ($items as $item) {
         echo '<option value="' . $item . '"'
-            . ($item == $options["theme-sort"] ? " selected" : "")
+            . ($item == $options["theme_sort"] ? " selected" : "")
             . '>' . $item . '</option>';
     }
 }
 
 /**
-Validation du champ de saisie
+    Saisie du champ theme_article_title
+ */
+function pbi_setting_theme_article_title()
+{
+    $options = get_option('theme_options');
+    $value = empty($options["theme_article_title"]) ? "Articles classés dans " : $options["theme_article_title"];
+    echo '<input type="text" id="theme_options[theme_article_title]" name="theme_options[theme_article_title]" 
+        value="'.$value.'">';
+}
+
+/**
+    Saisie du champ theme_news_title
+ */
+function pbi_setting_theme_news_title()
+{
+    $options = get_option('theme_options');
+    $value = empty($options["theme_news_title"]) ? "Les derniers articles" : $options["theme_news_title"];
+    echo '<input type="text" id="theme_options[theme_news_title]" name="theme_options[theme_news_title]" 
+        value="'.$value.'">';
+}
+/**
+    Saisie du champ theme_classement_title
+ */
+function pbi_setting_theme_classement_title()
+{
+    $options = get_option('theme_options');
+    $value = empty($options["theme_classement_title"]) ? "Classement des articles" : $options["theme_classement_title"];
+    echo '<input type="text" id="theme_options[theme_classement_title]" name="theme_options[theme_classement_title]" 
+        value="'.$value.'">';
+}
+
+/**
+    Validation du champ de saisie
  */
 function theme_options_validate($input)
 {
     $options = get_option('theme_options');
-    $options['theme-w3css'] = trim($input['theme-w3css']);
-    $options['theme-sort'] = trim($input['theme-sort']);
+    $options['theme_w3css'] = trim($input['theme_w3css']);
+    $options['theme_sort'] = trim($input['theme_sort']);
+    $options['theme_article_title'] = trim($input['theme_article_title']);
+    $options['theme_news_title'] = trim($input['theme_news_title']);
+    $options['theme_classement_title'] = trim($input['theme_classement_title']);
     return $options;
 }
