@@ -499,31 +499,20 @@ function is_pbi_cookie($cookie_name)
  * Modification de la requête avant envoi
  * https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
  */
-add_action('pre_get_posts', 'pbi_pre_get_posts');
 function pbi_pre_get_posts($query)
 {
-    // dump($query);
-    // if ( ! is_admin() && $query->is_main_query() ) {
-    //     // This is the main query (not on an admin screen page)
-    //     if ( is_user_logged_in() and is_pbi_cookie("pbi_private_checked") ) {
-    //         $query->set( 'post_status', array('private') );
-    //     } else {
-    //         $query->set( 'post_status', array('publish') );
-    //         $query->set( 'posts_per_page', 2 );
-    //     }
-    //  }
     if ((is_category() || is_tag() || is_home()) && $query->is_main_query()) {
         // This is the main query (not on an admin screen page)
-        if (is_user_logged_in() and is_pbi_cookie("pbi_private_checked")) {
-            $query->set('post_status', array('private'));
-        } else {
-            $query->set('post_status', array('publish'));
+        $options = get_option('theme_options');
+        if ( $options['theme-sort'] == "oui") {
+            $query->set('orderby', "title");
+            $query->set('order', "ASC");
         }
+        $query->set('post_per_page', 1);
+        $query->set('post_status', array('publish'));
     }
-    // $query->set( 'post_status', 'publish' );
-    // $query->set( 'posts_per_page', 2 );
-    //dump($query);
 }
+add_action('pre_get_posts', 'pbi_pre_get_posts');
 
 function get_cat_slug($cat_id)
 {
