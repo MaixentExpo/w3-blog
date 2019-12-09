@@ -6,7 +6,7 @@ http://www.geekpress.fr/wp-query-creez-des-requetes-personnalisees-dans-vos-them
 /**
   Chargement des scripts du front-end
  */
-define('PBI_VERSION', '19.12.08');
+define('PBI_VERSION', '19.12.09');
 
 // Filtre pour autoriser l'import de média issus d'un export de site
 add_filter('http_request_host_is_external', '__return_true');

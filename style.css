@@ -29,7 +29,7 @@ body, html {
     padding: 16px;
 }
 
-a {
+.no-decoration > a {
     text-decoration: none;
 }
 

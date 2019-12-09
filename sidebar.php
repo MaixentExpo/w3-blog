@@ -89,22 +89,15 @@ $req_blog = new WP_Query($args);
           else:
             $url = get_permalink();
           endif;
-
-          if ( is_user_logged_in() and is_pbi_cookie("pbi_private_checked") ):
-            if ( $post->post_status == 'private' ):?>
-              <li class="w3-padding-16 <?php echo $style_class; ?>">
-                <div class="w3-tag w3-round-large w3-theme w3-right"><?php echo $tag; ?></div>
-                <a href="<?php echo $url;?>"><span class="w3-large"><?php the_title();?></span></a>
-              </li>
-            <?php endif; ?>
-          <?php else: ?>
-            <?php if ( $post->post_status == 'publish' ):?>
-              <li class="w3-padding-16 <?php echo $style_class; ?>">
-                <div class="w3-tag w3-round-large w3-theme w3-right"><?php echo $tag; ?></div>
-                <a href="<?php echo $url;?>"><span class="w3-large"><?php the_title();?></span></a>
-              </li>
-            <?php endif; ?>
-          <?php endif; ?>
+        ?>
+        <?php if ( $post->post_status == 'publish' ):?>
+          <li class="w3-padding-16 <?php echo $style_class; ?>">
+            <div class="w3-tag w3-round-large w3-theme w3-right no-decoration"><?php echo $tag; ?></div>
+            <span class="w3-large no-decoration">
+              <a href="<?php echo $url;?>"><?php the_title();?></a>
+            </span>
+          </li>
+        <?php endif; ?>
       <?php endwhile; ?>
     <?php endif; ?>
     <?php wp_reset_postdata();?>
@@ -135,16 +128,16 @@ $req_blog = new WP_Query($args);
       krsort($tags);
       ?>
     <?php foreach ($cats as $slug => $name): ?>
-      <span class="w3-tag w3-round-large w3-margin-bottom w3-theme">
-      <a href="<?php echo get_home_url() . '/category/' . $slug;?>" style="text-decoration: none;">
+      <span class="w3-tag w3-round-large w3-margin-bottom w3-theme no-decoration">
+      <a href="<?php echo get_home_url() . '/category/' . $slug;?>">
       <?php echo $name;?></a>
       </span>
     <?php endforeach;?>
       </p>
       <p>
     <?php foreach ($tags as $slug => $name): ?>
-      <span class="w3-tag w3-round-large w3-margin-bottom w3-theme">
-      <a href="<?php echo get_home_url() . '/tag/' . $slug;?>" style="text-decoration: none;">
+      <span class="w3-tag w3-round-large w3-margin-bottom w3-theme no-decoration">
+      <a href="<?php echo get_home_url() . '/tag/' . $slug;?>">
       <?php echo $name;?></a>
       </span>
     <?php endforeach;?>

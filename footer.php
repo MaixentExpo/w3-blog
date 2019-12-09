@@ -3,9 +3,9 @@
     <!-- Return to Top -->
     <a href="javascript:" id="return-to-top" class="w3-theme-action"><i class="fa fa-arrow-up"></i></a>
     <div class="w3-row">
-        <div class="w3-col m3">
-            <div class="w3-bar-block">
-            <img style="height: 128px" src="<?php echo get_site_icon_url(); ?>" />
+        <div class="w3-col m2">
+            <div class="w3-bar-block w3-padding">
+            <img style="height: 92px" class="" src="<?php echo get_site_icon_url(); ?>" />
             </div>
         </div><!-- /w3-col -->
         <div class="w3-col m3">
@@ -20,11 +20,11 @@ if (!empty($menuID)) {
     $menuNav = wp_get_nav_menu_items($menuID);
     if (!empty($menuNav)) {
         foreach ($menuNav as $navItem):
-            echo '<a href="' . $navItem->url . '" title="' . $navItem->title . '" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . $navItem->title . '</a>';
+            echo '<a href="' . $navItem->url . '" title="' . $navItem->title . '" class="w3-bar-item w3-button w3-hover-text-theme w3-theme w3-padding-small">' . $navItem->title . '</a>';
         endforeach;
     } else {
         echo '<div class="w3-bar-block">';
-        echo '<div class="w3-bar w3-bar-item">&nbsp;</div>';
+        echo '<div class="w3-bar-item w3-padding-small">&nbsp;</div>';
         echo '</div>'; // end w3-bar    
     }
     echo '</div>'; // end w3-bar
@@ -43,11 +43,11 @@ if (!empty($menuID)) {
     $menuNav = wp_get_nav_menu_items($menuID);
     if (!empty($menuNav)) {
         foreach ($menuNav as $navItem):
-            echo '<a href="' . $navItem->url . '" title="' . $navItem->title . '" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . $navItem->title . '</a>';
+            echo '<a href="' . $navItem->url . '" title="' . $navItem->title . '" class="w3-bar-item w3-button w3-hover-text-theme w3-theme w3-padding-small">' . $navItem->title . '</a>';
         endforeach;
     } else {
         echo '<div class="w3-bar-block">';
-        echo '<div class="w3-bar w3-bar-item">&nbsp;</div>';
+        echo '<div class="w3-bar-item w3-padding-small">&nbsp;</div>';
         echo '</div>'; // end w3-bar    
     }
     echo '</div>'; // end w3-bar
@@ -66,12 +66,12 @@ if (!empty($menuID)) {
     if (is_user_logged_in()) {
         $menuNav = wp_get_nav_menu_items($menuID);
         foreach ($menuNav as $navItem):
-            echo '<a href="' . $navItem->url . '" title="' . $navItem->title . '" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . $navItem->title . '</a>';
+            echo '<a href="' . $navItem->url . '" title="' . $navItem->title . '" class="w3-bar-item w3-button w3-hover-text-theme w3-theme w3-padding-small">' . $navItem->title . '</a>';
         endforeach;
-        echo '<a href="' . wp_logout_url("/") . '" title="Se déconnecter" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Se déconnecter" . '</a>';
-        echo '<a href="' . get_home_url() . '/admin" title="Administration" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Administration" . '</a>';
+        echo '<a href="' . wp_logout_url("/") . '" title="Se déconnecter" class="w3-bar-item w3-button w3-hover-text-theme w3-theme w3-padding-small">' . "Se déconnecter" . '</a>';
+        echo '<a href="' . get_home_url() . '/admin" title="Administration" class="w3-bar-item w3-button w3-hover-text-theme w3-theme w3-padding-small">' . "Administration" . '</a>';
     } else {
-        echo '<a href="' . get_home_url() . '/admin" title="Administration" class="w3-bar-item w3-button w3-hover-text-theme w3-theme">' . "Administration..." . '</a>';
+        echo '<a href="' . get_home_url() . '/admin" title="Administration" class="w3-bar-item w3-button w3-hover-text-theme w3-theme w3-padding-small">' . "Administration..." . '</a>';
     } // endif
     echo '</div>'; // end w3-bar
 }
