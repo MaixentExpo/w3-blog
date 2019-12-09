@@ -10,22 +10,13 @@
       <?php if (have_posts()): ?>
         <?php while (have_posts()): the_post();?>
 	          <?php
-    if (is_user_logged_in()
-    and is_pbi_cookie("pbi_private_checked")):
-        if ($post->post_status == 'private'):
-            get_template_part('excerpt');
-        else:
-            get_template_part('page-404');
-        endif;
-    else:
         if ($post->post_status == 'publish'):
             get_template_part('excerpt');
         else:
             get_template_part('page-404');
         endif;
-    endif;
-    break; // un seul article
-    ?>
+        break; // un seul article
+        ?>
 	        <?php endwhile;?>
       <?php else: ?>
         <?php get_template_part('page-404');?>
