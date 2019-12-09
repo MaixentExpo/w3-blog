@@ -9,8 +9,8 @@
         <?php while (have_posts()): the_post();?>
 	          <!-- Header -->
 	          <div class="w3-card-4 w3-margin w3-white">
-	            <div class="w3-container">
-	              <h3><b><?php the_title();?></b></h3>
+	            <div class="w3-container w3-xlarge w3-text-theme">
+	              <h1><b><?php the_title();?></b></h1>
 	            </div>
 	            <div class="w3-container">
 	              <?php the_content(); ?>
