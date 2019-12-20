@@ -2,7 +2,7 @@
 Theme Name: W3 Blog
 Author: Philippe Billerot
 Description: Théme basé sur le template <a target="_blank" href="https://www.w3schools.com/w3css/tryw3css_templates_blog.htm">Blog Template de W3.CSS</a>
-Version: 1.5 du 8 décembre 2020
+Version: 1.6 du 20 décembre 2020
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -16,21 +16,12 @@ body, html {
     line-height: 1.8;
 }
 
-/* Full height image header */
-
-.bgimg-1 {
-    background-position: center;
-    background-size: cover;
-    background-image: url("assets/images/bgimg-1.jpg");
-    min-height: 100%;
+.w3-icon-file li {
+    list-style-type: none;
+    padding: 8px 16px;
+    margin: 0;
 }
 
-/*
-.wp-block-image {
-    margin-bottom: 1em;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-}
-*/
 .w3-bar .w3-button {
     padding: 16px;
 }
