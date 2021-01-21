@@ -37,6 +37,24 @@ body, html {
     justify-content: space-between
 }
 
+/* légende sur diapo */
+.blocks-gallery-grid .blocks-gallery-image figcaption,
+.blocks-gallery-grid .blocks-gallery-item figcaption,
+.wp-block-gallery .blocks-gallery-image figcaption,
+.wp-block-gallery .blocks-gallery-item figcaption {
+ position:absolute;
+ bottom:0;
+ width:100%;
+ max-height:100%;
+ overflow:auto;
+ padding:20px 10px 9px;
+ color:#fff;
+ text-align:center;
+ font-size:13px;
+ font-weight: bold;
+ background:linear-gradient(0deg,rgba(0,0,0,.7),rgba(0,0,0,.3) 70%,transparent)
+}
+
 /* Return to top */
 
 #return-to-top {
